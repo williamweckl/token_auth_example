@@ -1,0 +1,67 @@
+<h1><a href="/" data-ng-bind="config.name"></a></h1>
+
+<section>
+    <a href="javascript:;" class="btn-facebook-round">Login with facebook</a>
+</section>
+
+<span>OR</span>
+
+<div data-ng-show="flash && flash.success">
+    <span data-ng-bind="flash.success"></span>
+</div>
+
+<div data-ng-show="errorAlert">
+    <ul>
+        <li>There are form errors. Correct before continue.</li>
+    </ul>
+</div>
+
+<section>
+    <form name="form_signup" ng-submit="submitRegistration(registrationForm)">
+        <div>
+            <input type="text"
+                   placeholder="Name"
+                   name="name"
+                   required
+                   ng-model="registrationForm.name"
+                   ng-class="errors.name ? 'ng-invalid ng-dirty' : '' "
+                    >
+        </div>
+        <div data-ng-show="errors.name" data-ng-bind="errors.name.join(',')"></div>
+        <div>
+            <input type="email"
+                   placeholder="E-mail"
+                   name="email"
+                   required
+                   ng-model="registrationForm.email"
+                   ng-class="errors.email ? 'ng-invalid ng-dirty' : '' "
+                    >
+        </div>
+        <div data-ng-show="errors.email" data-ng-bind="errors.email.join(',')"></div>
+        <div>
+            <input type="password"
+                   placeholder="Password"
+                   name="password"
+                   required
+                   ng-model="registrationForm.password"
+                   ng-class="errors.password ? 'ng-invalid ng-dirty' : '' "
+                    >
+        </div>
+        <div data-ng-show="errors.password" data-ng-bind="errors.password.join(',')"></div>
+        <div>
+            <input type="password"
+                   placeholder="Password confirmation"
+                   name="password_confirmation"
+                   required
+                   ng-model="registrationForm.password_confirmation"
+                   ng-class="errors.password_confirmation ? 'ng-invalid ng-dirty' : '' "
+                    >
+        </div>
+        <div data-ng-show="errors.password_confirmation" data-ng-bind="errors.password_confirmation.join(',')"></div>
+        <button type="submit" data-ng-disabled="!canSubmit()">Sign up</button>
+    </form>
+</section>
+
+<section>
+    <a href="/sign_in">Sign in</a>
+</section>

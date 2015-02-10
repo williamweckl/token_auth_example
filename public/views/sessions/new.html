@@ -1,0 +1,43 @@
+<h1><a href="/" data-ng-bind="config.name"></a></h1>
+
+<section>
+    <a href="#" data-ng-click="authenticate('facebook')" >Login with facebook</a>
+</section>
+
+<span>OR</span>
+
+<div data-ng-show="flash && flash.success">
+    <span data-ng-bind="flash.success"></span>
+</div>
+
+<div data-ng-show="errorAlert">
+    <ul>
+        <li data-ng-repeat="error in errors" data-ng-bind="error"></li>
+    </ul>
+</div>
+
+<form name="form_signin" data-ng-submit="submitLogin(loginForm)">
+    <fieldset>
+        <div >
+            <input type="email"
+                   placeholder="Email"
+                   required
+                   data-ng-model="loginForm.email"
+                   name="email"
+                    >
+        </div>
+        <div >
+            <input type="password"
+                   placeholder="Password"
+                   required
+                   data-ng-model="loginForm.password"
+                   name="password"
+                    >
+        </div>
+        <button type="submit" data-ng-disabled="!canSubmit()">Log in</button>
+    </fieldset>
+</form>
+
+<section>
+    <a href="/sign_up">Sign up</a>
+</section>
